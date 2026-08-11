@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- The pilcrow — the edition's own mark (every paragraph anchor carries
+       one). Oxblood, brightening in dark tabs like the site's accent. -->
+  <style>
+    path, rect { fill: #7a2d27; }
+    @media (prefers-color-scheme: dark) {
+      path, rect { fill: #c05e50; }
+    }
+  </style>
+  <path d="M71 14 L71 54 L50 54 A20 20 0 1 1 50 14 Z" />
+  <rect x="62" y="14" width="9" height="72" />
+  <rect x="44" y="14" width="9" height="72" />
+</svg>

@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Not in the record - Pulpit</title>
+<meta name="robots" content="noindex">
+<script>
+  // Legacy-prefix net: the pre-domain deploy lived under /pulpit-site/, and
+  // pages cached from the 2026-07-23 cutover window still carry that prefix
+  // in their links. Strip it and land on the real page. (#pN survives; the
+  // browser hides any :~:text directive from scripts, so only the element
+  // anchor carries over.)
+  (function () {
+    var m = location.pathname.match(/^\/pulpit-site(\/.*)?$/);
+    if (m) location.replace((m[1] || "/") + location.search + location.hash);
+    try {
+      var t = localStorage.getItem("pulpit:appearance");
+      if (t === "dark" || t === "light") document.documentElement.setAttribute("data-theme", t);
+    } catch (e) { /* system preference applies */ }
+  })();
+</script>
+<style>
+  @font-face {
+    font-family: "Fraunces";
+    src: url("/fonts/fraunces-var.woff2") format("woff2");
+    font-weight: 100 900;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Newsreader";
+    src: url("/fonts/newsreader-var.woff2") format("woff2");
+    font-weight: 100 900;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Spline Sans Mono";
+    src: url("/fonts/spline-sans-mono-var.woff2") format("woff2");
+    font-weight: 100 900;
+    font-display: swap;
+  }
+  :root {
+    --paper: #faf6ec; --ink: #221d15; --ink-soft: #3a332a;
+    --ink-faint: #6d6250; --hair: #ddd1b9; --oxblood: #7a2d27;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #191510; --ink: #e9e1d0; --ink-soft: #b3a892;
+      --ink-faint: #837964; --hair: #352d22; --oxblood: #c05e50;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #191510; --ink: #e9e1d0; --ink-soft: #b3a892;
+    --ink-faint: #837964; --hair: #352d22; --oxblood: #c05e50;
+    color-scheme: dark;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Newsreader", Georgia, serif;
+    font-size: 19px;
+    line-height: 1.6;
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+    padding: 2rem 1.2rem;
+  }
+  main { max-width: 34rem; }
+  .lbl {
+    font-family: "Spline Sans Mono", ui-monospace, monospace;
+    font-size: .68rem;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    display: block;
+    margin-bottom: 1.1rem;
+  }
+  h1 {
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 480;
+    font-size: 2.1rem;
+    line-height: 1.15;
+    margin-bottom: 1rem;
+  }
+  .rule { width: 5.5rem; border-top: 2px solid var(--oxblood); margin: 1.4rem 0; }
+  p { color: var(--ink-soft); margin-bottom: .8rem; }
+  a { color: var(--oxblood); text-decoration: underline; text-decoration-color: var(--hair); text-underline-offset: 2px; }
+  a:hover { text-decoration-color: var(--oxblood); }
+  nav { margin-top: 1.6rem; font-size: .95rem; }
+  nav a { margin-right: 1.4rem; }
+</style>
+</head>
+<body>
+  <main>
+    <span class="lbl">Pulpit · file not found</span>
+    <h1>This leaf is not in the record.</h1>
+    <div class="rule"></div>
+    <p>The address does not match any talk, page, or index in the current
+    edition. If a shared link brought you here, the passage may have moved —
+    the archive and timeline below reach every talk in the corpus.</p>
+    <nav>
+      <a href="/time/">The corpus in time</a>
+      <a href="/archive/">Browse the archive</a>
+      <a href="/">Front page</a>
+    </nav>
+  </main>
+</body>
+</html>
